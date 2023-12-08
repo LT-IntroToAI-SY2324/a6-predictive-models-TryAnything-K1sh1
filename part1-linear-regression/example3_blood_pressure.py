@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 '''
 Run the program and consider the following questions:
@@ -9,11 +10,15 @@ Run the program and consider the following questions:
 '''
 
 data = pd.read_csv("part1-linear-regression/blood_pressure_data.csv")
-x = data["Age"]
-y = data["Blood Pressure"]
+x = data["Age"].values
+y = data["Blood Pressure"].values
 
 #sets the size of the graph
-plt.figure(figsize=(5,4))
+plt.figure(figsize=(6,6))
+
+x = x.reshape(-1, 1)
+
+model = LinearRegression().fit(x, y)
 
 #labels axes and creates scatterplot
 plt.xlabel("Age")
@@ -21,6 +26,9 @@ plt.ylabel("Systolic Blood Pressure")
 plt.title("Systolic Blood Pressure by Age")
 plt.scatter(x, y)
 
-print("Pearson's Correlation: r = :", x.corr(y))
+
+x_predict = 43
+# plug that value into your model
+prediction = model.predict([[x_predict]])
 
 plt.show()

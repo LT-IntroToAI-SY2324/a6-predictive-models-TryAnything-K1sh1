@@ -8,7 +8,7 @@ x = data["Temp"]
 y = data["Chirps"]
 
 # sets the size of the graph
-plt.figure(figsize=(6,4))
+plt.figure(figsize=(6,6))
 
 # creates a scatter plot and labels the axes
 plt.scatter(x,y)
