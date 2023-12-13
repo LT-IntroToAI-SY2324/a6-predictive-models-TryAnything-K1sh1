@@ -8,11 +8,12 @@ data = pd.read_csv("part5-unsupervised-learning/customer_data.csv")
 x = data[["Annual Income", "Spending Score"]]
 
 #standardize the data
+x_std = StandardScaler().fit_transform(data)
 
 
 #the value of k has been defined for you
 k = 5
-
+km = KMeans(n_clusters=k).fit(x_std)
 #apply the kmeans algorithm
 
 
@@ -20,7 +21,7 @@ k = 5
 
 
 #sets the size of the graph
-plt.figure(figsize=(5,4))
+plt.figure(figsize=(6,4))
 
 #use a for loop to plot the data points in each cluster
 
